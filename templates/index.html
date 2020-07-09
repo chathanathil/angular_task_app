@@ -33,7 +33,7 @@
     <title>Document</title>
   </head>
 
-  <body ng-app="myApp" ng-controller="taskCtrl">
+  <body ng-app="myApp" ng-controller="taskCtrl" ng-init="loadData()">
     <div class="card ml-5 mt-5 border border-primary" style="width: 60rem;">
       <div class="card-header bg-primary">
         <div class="row d-flex justify-content-between">
@@ -81,9 +81,13 @@
             class="card-body d-flex justify-content-between align-items-center"
           >
             <div>
-              <input type="checkbox" ng-model="x.done" />
-              <span ng-class="{'is-complete': x.done==true } ">
-                <span ng-bind="x.taskText"></span>
+              <input
+                type="checkbox"
+                ng-model="x.status"
+                ng-click="editTask(x)"
+              />
+              <span ng-class="{'is-complete': x.status==1 } ">
+                <span ng-bind="x.task"></span>
                 [<span ng-bind="x.id"></span>]
               </span>
             </div>
